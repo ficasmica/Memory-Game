@@ -30,6 +30,7 @@ public class Card : MonoBehaviour
             return;
         } else{
             anim.SetBool("flip", true); // flip animacija
+            GetComponent<BoxCollider2D>().enabled = false; // da ne moze dupli klik
             // storniraj slicice za check i start check
             if (table.firstCard == null && table.secondCard == null){
                 table.firstCard = gameObject;
@@ -38,6 +39,12 @@ public class Card : MonoBehaviour
                 table.canFlip = false;
                 table.CheckCards();
             }
+        }
+    }
+
+    public void TurnOnCollider(){
+        if (GetComponent<BoxCollider2D>().enabled == false){
+            GetComponent<BoxCollider2D>().enabled = true;
         }
     }
 
